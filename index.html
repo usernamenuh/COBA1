@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MESTORE - Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #f7f7f7 0%, #e0e7ff 100%);
+            color: #222;
+        }
+        header {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(100deg, #7c3aed 0%, #a21caf 100%);
+            color: #fff;
+          /*   padding: 90px 0 60px 0; */
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(76, 61, 255, 0.10);
+        }
+        .header-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .header-shape {
+            position: absolute;
+            top: -120px;
+            left: -120px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at 30% 30%, #a78bfa 0%, #7c3aed 60%, transparent 100%);
+            opacity: 0.35;
+            filter: blur(10px);
+            border-radius: 50%;
+            z-index: 1;
+            animation: float1 8s ease-in-out infinite alternate;
+        }
+        .header-shape2 {
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle at 70% 70%, #818cf8 0%, #a21caf 70%, transparent 100%);
+            opacity: 0.28;
+            filter: blur(12px);
+            border-radius: 50%;
+            z-index: 1;
+            animation: float2 10s ease-in-out infinite alternate;
+        }
+        @keyframes float1 {
+            0% { transform: translateY(0) scale(1);}
+            100% { transform: translateY(30px) scale(1.08);}
+        }
+        @keyframes float2 {
+            0% { transform: translateY(0) scale(1);}
+            100% { transform: translateY(-25px) scale(1.05);}
+        }
+        header h1 {
+            margin: 0;
+            font-size: 4rem;
+            letter-spacing: 2px;
+            font-weight: 900;
+            text-shadow: 0 4px 32px rgba(76, 61, 255, 0.18);
+            position: relative;
+            z-index: 2;
+            line-height: 1.1;
+        }
+        header p {
+            margin: 30px 0 0 0;
+            font-size: 1.6rem;
+            font-weight: 400;
+            opacity: 0.98;
+            position: relative;
+            z-index: 2;
+            line-height: 1.5;
+        }
+        /* Animated scroll down indicator */
+        .scroll-down {
+            position: absolute;
+            left: 50%;
+            bottom: 18px;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.85;
+        }
+        .mouse {
+            width: 28px;
+            height: 44px;
+            border: 2px solid #fff;
+            border-radius: 16px;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .mouse-wheel {
+            width: 4px;
+            height: 10px;
+            background: #fff;
+            border-radius: 2px;
+            position: absolute;
+            left: 50%;
+            top: 8px;
+            transform: translateX(-50%);
+            animation: wheelMove 1.3s infinite;
+        }
+        @keyframes wheelMove {
+            0% { opacity: 0.7; top: 8px;}
+            50% { opacity: 1; top: 18px;}
+            100% { opacity: 0.7; top: 8px;}
+        }
+        .scroll-text {
+            color: #fff;
+            font-size: 0.95rem;
+            margin-top: 6px;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+        .container {
+            max-width: 950px;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 32px rgba(76, 61, 255, 0.08);
+            padding: 50px 36px;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 36px;
+            justify-content: flex-start;
+            margin-top: 36px;
+        }
+        .feature {
+            flex: 1 1 250px;
+            background: linear-gradient(135deg, #f1f5f9 60%, #e0e7ff 100%);
+            border-radius: 12px;
+            padding: 32px 22px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(76, 61, 255, 0.06);
+            transition: transform 0.18s, box-shadow 0.18s;
+        }
+        .feature:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(76, 61, 255, 0.13);
+        }
+        .feature img {
+            width: 56px;
+            height: 56px;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 2px 8px rgba(76, 61, 255, 0.10));
+        }
+        .feature h3 {
+            margin-top: 12px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #4f46e5;
+        }
+        .feature p {
+            font-size: 1.05rem;
+            color: #444;
+            margin-top: 8px;
+        }
+        .cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: max-content;
+            margin: 48px auto 0 auto;
+            background: linear-gradient(90deg, #7c3aed 0%, #4f46e5 100%);
+            color: #fff;
+            padding: 18px 48px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.18rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 2px 16px rgba(76, 61, 255, 0.10);
+            transition: background 0.2s, transform 0.15s;
+        }
+        .cta:hover {
+            background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
+            transform: translateY(-2px) scale(1.04);
+        }
+        .cta svg {
+            width: 22px;
+            height: 22px;
+            fill: #fff;
+        }
+        /* Footer style */
+        footer {
+            margin-top: 60px;
+            padding: 32px 0 18px 0;
+            background: linear-gradient(90deg, #7c3aed 0%, #a21caf 100%);
+            color: #fff;
+            text-align: center;
+            font-size: 1.08rem;
+            letter-spacing: 1px;
+            border-radius: 24px 24px 0 0;
+            box-shadow: 0 -2px 24px rgba(76, 61, 255, 0.07);
+        }
+        .footer-links {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: #fff;
+            text-decoration: underline;
+            margin: 0 10px;
+            opacity: 0.85;
+            transition: opacity 0.2s;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        /* Testimoni */
+        .testimonials {
+            max-width: 950px;
+            margin: 60px auto 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 32px rgba(76, 61, 255, 0.08);
+            padding: 40px 36px;
+            text-align: center;
+        }
+        .testimonials h2 {
+            color: #7c3aed;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+        .testimonial-list {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .testimonial {
+            background: linear-gradient(135deg, #f1f5f9 60%, #e0e7ff 100%);
+            border-radius: 12px;
+            padding: 28px 20px 18px 20px;
+            box-shadow: 0 2px 12px rgba(76, 61, 255, 0.06);
+            max-width: 300px;
+            flex: 1 1 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .testimonial img {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            margin-bottom: 14px;
+            border: 3px solid #a78bfa;
+        }
+        .testimonial p {
+            font-size: 1.05rem;
+            color: #444;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        .testimonial span {
+            color: #7c3aed;
+            font-weight: 600;
+            font-size: 0.98rem;
+        }
+
+        /* FAQ */
+        .faq {
+            max-width: 950px;
+            margin: 60px auto 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 32px rgba(76, 61, 255, 0.08);
+            padding: 40px 36px;
+        }
+        .faq h2 {
+            color: #7c3aed;
+            margin-bottom: 24px;
+            font-size: 2rem;
+            text-align: center;
+        }
+        .faq-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+        }
+        .faq-item {
+            flex: 1 1 250px;
+            background: linear-gradient(135deg, #f1f5f9 60%, #e0e7ff 100%);
+            border-radius: 12px;
+            padding: 22px 18px;
+            box-shadow: 0 2px 12px rgba(76, 61, 255, 0.06);
+            margin-bottom: 10px;
+        }
+        .faq-item h4 {
+            margin: 0 0 10px 0;
+            color: #4f46e5;
+            font-size: 1.1rem;
+        }
+        .faq-item p {
+            margin: 0;
+            color: #444;
+            font-size: 1rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            max-width: 950px;
+            margin: 60px auto 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 32px rgba(76, 61, 255, 0.08);
+            padding: 40px 36px 32px 36px;
+            text-align: center;
+        }
+        .newsletter h2 {
+            color: #7c3aed;
+            margin-bottom: 18px;
+            font-size: 2rem;
+        }
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .newsletter-form input[type="email"] {
+            padding: 12px 18px;
+            border-radius: 24px;
+            border: 1.5px solid #a78bfa;
+            font-size: 1rem;
+            outline: none;
+            width: 260px;
+            transition: border 0.2s;
+        }
+        .newsletter-form input[type="email"]:focus {
+            border: 1.5px solid #7c3aed;
+        }
+        .newsletter-form button {
+            padding: 12px 28px;
+            border-radius: 24px;
+            border: none;
+            background: linear-gradient(90deg, #7c3aed 0%, #4f46e5 100%);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .newsletter-form button:hover {
+            background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
+            transform: translateY(-2px) scale(1.04);
+        }
+
+        /* Tambahkan style untuk section baru */
+        .why-us {
+            max-width: 950px;
+            margin: 60px auto 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 32px rgba(76, 61, 255, 0.08);
+            padding: 40px 36px 32px 36px;
+            text-align: center;
+        }
+        .why-us h2 {
+            color: #7c3aed;
+            margin-bottom: 28px;
+            font-size: 2rem;
+        }
+        .why-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+        }
+        .why-item {
+            flex: 1 1 200px;
+            background: linear-gradient(135deg, #f1f5f9 60%, #e0e7ff 100%);
+            border-radius: 12px;
+            padding: 28px 18px 18px 18px;
+            box-shadow: 0 2px 12px rgba(76, 61, 255, 0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 200px;
+            max-width: 240px;
+        }
+        .why-item img {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 12px;
+        }
+        .why-item h4 {
+            margin: 0 0 10px 0;
+            color: #4f46e5;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .why-item p {
+            margin: 0;
+            color: #444;
+            font-size: 1rem;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 36px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 10;
+            background: transparent;
+        }
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        .navbar-logo img {
+            width: 38px;
+            height: 38px;
+        }
+        .navbar-menu {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar-menu li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.08rem;
+            font-weight: 500;
+            opacity: 0.92;
+            transition: opacity 0.2s, border-bottom 0.2s;
+            padding-bottom: 2px;
+            border-bottom: 2px solid transparent;
+        }
+        .navbar-menu li a:hover {
+            opacity: 1;
+            border-bottom: 2px solid #fff;
+        }
+        .navbar-cta {
+            background: #fff;
+            color: #7c3aed;
+            font-weight: 700;
+            padding: 8px 28px;
+            border-radius: 22px;
+            text-decoration: none;
+            font-size: 1rem;
+            box-shadow: 0 2px 12px rgba(76, 61, 255, 0.10);
+            transition: background 0.2s, color 0.2s;
+        }
+        .navbar-cta:hover {
+            background: #7c3aed;
+            color: #fff;
+        }
+        .header-content {
+            margin-top: 40px;
+            position: relative;
+            z-index: 2;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 3.2rem;
+            letter-spacing: 2px;
+            font-weight: 900;
+            text-shadow: 0 4px 32px rgba(76, 61, 255, 0.18);
+            line-height: 1.1;
+        }
+        header p {
+            margin: 30px 0 0 0;
+            font-size: 1.4rem;
+            font-weight: 400;
+            opacity: 0.98;
+            line-height: 1.5;
+        }
+        @media (max-width: 900px) {
+            .navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 12px 8px;
+                gap: 10px;
+            }
+            .navbar-menu {
+                gap: 16px;
+            }
+            .header-content {
+                margin-top: 24px;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 4vw;
+            }
+            .navbar-logo {
+                font-size: 1.1rem;
+            }
+            .navbar-menu {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .navbar-cta {
+                margin-top: 10px;
+                padding: 7px 18px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-logo">
+                <img src="https://img.icons8.com/color/48/000000/shop.png" alt="MESTORE Logo">
+                <span>MESTORE</span>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#features">Fitur</a></li>
+                <li><a href="#testimonials">Testimoni</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+            <a href="#" class="navbar-cta">Login</a>
+        </nav>
+    </header>
+    <div class="container">
+        <section class="features">
+            <div class="feature">
+                <img src="https://img.icons8.com/fluency/56/000000/shopping-cart.png" alt="Belanja Mudah"/>
+                <h3>Belanja Mudah</h3>
+                <p>Proses belanja cepat, mudah, dan aman hanya dalam beberapa klik.</p>
+            </div>
+            <div class="feature">
+                <img src="https://img.icons8.com/fluency/56/000000/discount.png" alt="Harga Terbaik"/>
+                <h3>Harga Terbaik</h3>
+                <p>Dapatkan penawaran dan diskon menarik setiap hari.</p>
+            </div>
+            <div class="feature">
+                <img src="https://img.icons8.com/fluency/56/000000/delivery.png" alt="Pengiriman Cepat"/>
+                <h3>Pengiriman Cepat</h3>
+                <p>Pengiriman ke seluruh Indonesia dengan layanan ekspedisi terpercaya.</p>
+            </div>
+        </section>
+        <a href="#" class="cta">
+            Mulai Belanja Sekarang
+            <svg viewBox="0 0 24 24"><path d="M13.172 12l-4.95-4.95a1 1 0 111.414-1.414l6.364 6.364a1 1 0 010 1.414l-6.364 6.364a1 1 0 11-1.414-1.414L13.172 12z"/></svg>
+        </a>
+    </div>
+
+    <!-- Section Testimoni -->
+    <section class="testimonials">
+        <h2>Testimoni Pelanggan</h2>
+        <div class="testimonial-list">
+            <div class="testimonial">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User 1">
+                <p>"Pelayanan cepat, produk original, dan harga bersaing. Sangat puas belanja di MESTORE!"</p>
+                <span>- Andi, Jakarta</span>
+            </div>
+            <div class="testimonial">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User 2">
+                <p>"Pengiriman super cepat dan customer service sangat membantu. Recomended!"</p>
+                <span>- Siti, Bandung</span>
+            </div>
+            <div class="testimonial">
+                <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="User 3">
+                <p>"Banyak promo menarik dan pilihan produk lengkap. Akan belanja lagi!"</p>
+                <span>- Budi, Surabaya</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section FAQ -->
+    <section class="faq">
+        <h2>FAQ</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <h4>Bagaimana cara memesan produk?</h4>
+                <p>Pilih produk yang diinginkan, klik tombol "Beli", lalu ikuti instruksi pembayaran.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Apakah bisa COD?</h4>
+                <p>Ya, kami menyediakan opsi pembayaran Cash On Delivery untuk area tertentu.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Bagaimana jika barang tidak sesuai?</h4>
+                <p>Anda dapat mengajukan retur atau penukaran barang sesuai kebijakan kami.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Newsletter -->
+    <section class="newsletter">
+        <h2>Dapatkan Promo Menarik!</h2>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Masukkan email Anda" required>
+            <button type="submit">Langganan</button>
+        </form>
+    </section>
+
+    <!-- Tambahkan section baru di bawah .newsletter sebelum <footer> -->
+    <section class="why-us">
+        <h2>Mengapa Memilih MESTORE?</h2>
+        <div class="why-list">
+            <div class="why-item">
+                <img src="https://img.icons8.com/color/48/000000/security-checked.png" alt="Aman & Terpercaya">
+                <h4>Aman & Terpercaya</h4>
+                <p>Transaksi dijamin aman dengan sistem pembayaran terpercaya dan perlindungan konsumen.</p>
+            </div>
+            <div class="why-item">
+                <img src="https://img.icons8.com/color/48/000000/online-support.png" alt="Support 24/7">
+                <h4>Support 24/7</h4>
+                <p>Layanan pelanggan siap membantu Anda kapan saja melalui chat, email, dan telepon.</p>
+            </div>
+            <div class="why-item">
+                <img src="https://img.icons8.com/color/48/000000/box--v2.png" alt="Produk Original">
+                <h4>Produk Original</h4>
+                <p>Semua produk dijamin 100% original dan bergaransi resmi dari distributor.</p>
+            </div>
+            <div class="why-item">
+                <img src="https://img.icons8.com/color/48/000000/price-tag--v2.png" alt="Banyak Promo">
+                <h4>Banyak Promo</h4>
+                <p>Promo menarik dan diskon spesial setiap minggu untuk pelanggan setia.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Tentang Kami</a> | 
+            <a href="#">Kontak</a> | 
+            <a href="#">Kebijakan Privasi</a>
+        </div>
+        &copy; 2025 MESTORE. All rights reserved.
+    </footer>
+</body>
+</html>
