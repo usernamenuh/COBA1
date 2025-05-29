@@ -1,9 +1,3 @@
-# 📊 GitHub Stats:
-![](https://github-readme-stats.vercel.app/api?username=Usernamenuh&theme=github_dark&hide_border=false&include_all_commits=false&count_private=false)<br/>
-![](https://nirzak-streak-stats.vercel.app/?user=Usernamenuh&theme=github_dark&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=Usernamenuh&theme=github_dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
+# MESTORE - Landing Page
 
----
-[![](https://visitcount.itsvg.in/api?id=Usernamenuh&icon=0&color=0)](https://visitcount.itsvg.in)
-
-<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
+Landing page statis modern dan responsif untuk MESTORE, dibuat menggunakan HTML dan CSS murni. Dirancang untuk menampilkan informasi dengan tampilan profesional dan estetik.
